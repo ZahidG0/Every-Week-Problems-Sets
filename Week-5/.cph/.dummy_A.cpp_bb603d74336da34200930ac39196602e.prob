@@ -1,0 +1,1 @@
+{"name":"Local: dummy_A","url":"e:\\Phitron-G0\\XPSC\\Every-Week-Problem-Sets\\Week-5\\dummy_A.cpp","tests":[{"id":1790929702254,"input":"3\n1\n10\n2\n6 7\n4\n1 4 3 4\n","output":"1\n1\n2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Phitron-G0\\XPSC\\Every-Week-Problem-Sets\\Week-5\\dummy_A.cpp","group":"local","local":true}
