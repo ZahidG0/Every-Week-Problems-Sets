@@ -44,7 +44,8 @@ void ZH_Solve()
     int N = 200005;
 
     vector<int> diff(N + 2, 0);
-    vector<int> pref(N + 1, 0);
+    vector<int> recommanded_recipe_prefx(N + 1, 0);
+    vector<int> range_prefix(N + 1, 0);
 
     for (int i = 0; i < n; i++)
     {
@@ -55,17 +56,20 @@ void ZH_Solve()
         diff[r + 1]--;
     }
 
-    int existed = 0;
-
+    // First Prefix Sum: Active recipes existed for recommanded for k >= 
     for (int i = 1; i <= N; i++)
     {
-        existed += diff[i];
+        recommanded_recipe_prefx[i] = recommanded_recipe_prefx[i - 1] + diff[i];
+    }
 
-        pref[i] = pref[i - 1];
+    // Second Prefix Sum: Admissible temperatures
+    for (int i = 1; i <= N; i++)
+    {
+        range_prefix[i] = range_prefix[i - 1];
 
-        if (existed >= k)
+        if (recommanded_recipe_prefx[i] >= k)
         {
-            pref[i]++;
+            range_prefix[i]++;
         }
     }
 
@@ -74,7 +78,7 @@ void ZH_Solve()
         int a, b;
         cin >> a >> b;
 
-        int ans = pref[b] - pref[a - 1];
+        int ans = range_prefix[b] - range_prefix[a - 1];
 
         cout << ans << nl;
     }
